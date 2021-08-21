@@ -9,5 +9,6 @@ data class Search(
     val illusts: List<Illust>,
     @SerialName("next_url")
     val nextUrl: String? = null,
-    val search_span_limit: Int,
+    @SerialName("search_span_limit")
+    val searchSpanLimit: Int,
 )

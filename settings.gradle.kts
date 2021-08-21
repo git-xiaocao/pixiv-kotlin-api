@@ -1,2 +1,2 @@
-rootProject.name = "pixiv-kotlin-api-xiaocao"
+rootProject.name = "pixiv-kotlin-api"
 
