@@ -10,6 +10,13 @@ import top.xiaocao.api.module.Search
 
 val api = PixivAPI()
 
+suspend fun testGetUserDetail(){
+    //逆流茶会
+    val result = api.getUserDetail(50258193)
+    val json = Json.encodeToString(result)
+    println(json)
+}
+
 suspend fun testGetUserBookmarks() {
     //获取自己的
     val result = api.getUserBookmarks(46139112, true)
@@ -65,6 +72,6 @@ suspend fun testSearch() {
 
 suspend fun main() {
 
-    testSearch()
+    testGetUserDetail()
 
 }

@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dc6555-ee33-48db-83ca-5e973f22227f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+    <list default="true" id="89dc6555-ee33-48db-83ca-5e973f22227f" name="更改" comment="-">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/Search.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/Search.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/UserDetail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/UserDetail.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +57,20 @@
       <recent name="E:\Flutter\pixiv-kotlin-api" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="ApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="top.xiaocao.ApplicationKt" />
+      <module name="pixiv-kotlin-api.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.ApplicationKt" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -72,8 +82,16 @@
       <workItem from="1629453842332" duration="404000" />
       <workItem from="1629454276812" duration="1154000" />
       <workItem from="1629456485040" duration="63000" />
-      <workItem from="1629508451539" duration="1258000" />
+      <workItem from="1629508451539" duration="4922000" />
     </task>
+    <task id="LOCAL-00001" summary="-">
+      <created>1629509727923</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629509727923</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,5 +108,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-" />
+    <option name="LAST_COMMIT_MESSAGE" value="-" />
   </component>
 </project>

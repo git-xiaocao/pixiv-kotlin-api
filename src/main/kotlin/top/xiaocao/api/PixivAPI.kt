@@ -100,6 +100,18 @@ class PixivAPI {
         return httpClient.get(url.replaceFirst("app-api.pixiv.net", "210.140.131.187"))
     }
 
+    /**
+     * 获取用户详细信息
+     * @param userId 用户ID
+     * */
+    suspend fun getUserDetail(userId: Int): UserDetail {
+        return httpClient.get {
+            url("${baseUrl}/v1/user/detail")
+            parameter("filter", "for_android")
+            parameter("user_id", userId)
+
+        }
+    }
 
     /**
      *  @param userId 用户ID
@@ -108,9 +120,9 @@ class PixivAPI {
     suspend fun getUserBookmarks(userId: Int, restrict: Boolean = true): Illusts {
         return httpClient.get {
             url("${baseUrl}/v1/user/bookmarks/illust")
-            parameter("user_id", userId)
-            parameter("filter", "for_android")
 
+            parameter("filter", "for_android")
+            parameter("user_id", userId)
             parameter("restrict", if (restrict) "public" else "private")
 
         }

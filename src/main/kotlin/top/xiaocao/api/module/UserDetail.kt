@@ -32,45 +32,45 @@ data class UserProfile(
     //出生
     val birth: String,
     @SerialName("birth_day")
-    val birth_day: String,
+    val birthDay: String,
     @SerialName("birth_year")
-    val birth_year: Int,
+    val birthYear: Int,
     val region: String,
     @SerialName("address_id")
-    val address_id: Int,
+    val addressId: Int,
     @SerialName("country_code")
-    val country_code: Int,
+    val countryCode: String,
     val job: String,
     @SerialName("job_id")
-    val job_id: Int,
+    val jobId: Int,
     @SerialName("total_follow_users")
-    val total_follow_users: Int,
+    val totalFollowUsers: Int,
     @SerialName("total_mypixiv_users")
-    val total_mypixiv_users: Int,
+    val totalMyPixivUsers: Int,
     @SerialName("total_illusts")
-    val total_illusts: Int,
+    val totalIllusts: Int,
     @SerialName("total_manga")
-    val total_manga: Int,
+    val totalManga: Int,
     @SerialName("total_novels")
-    val total_novels: Int,
+    val totalNovels: Int,
     @SerialName("total_illust_bookmarks_public")
-    val total_illust_bookmarks_public: Int,
+    val totalIllustBookmarksPublic: Int,
     @SerialName("total_illust_series")
-    val total_illust_series: Int,
+    val totalIllustSeries: Int,
     @SerialName("total_novel_series")
-    val total_novel_series: Int,
+    val totalNovelSeries: Int,
     @SerialName("background_image_url")
-    val background_image_url: String? = null,
+    val backgroundImageUrl: String? = null,
     @SerialName("twitter_account")
-    val twitter_account: String? = null,
+    val twitterAccount: String? = null,
     @SerialName("twitter_url")
-    val twitter_url: String? = null,
+    val twitterUrl: String? = null,
     @SerialName("pawoo_url")
-    val pawoo_url: String? = null,
+    val pawooUrl: String? = null,
     @SerialName("is_premium")
-    val is_premium: Boolean,
+    val isPremium: Boolean,
     @SerialName("is_using_custom_profile_image")
-    val is_using_custom_profile_image: Boolean,
+    val isUsingCustomProfileImage: Boolean,
 )
 
 @Serializable
