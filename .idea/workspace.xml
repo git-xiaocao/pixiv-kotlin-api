@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="89dc6555-ee33-48db-83ca-5e973f22227f" name="更改" comment="-">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/UserDetail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/UserDetail.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/PixivAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/PixivAPI.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/Users.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/top/xiaocao/api/module/Users.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +51,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -82,7 +85,8 @@
       <workItem from="1629453842332" duration="404000" />
       <workItem from="1629454276812" duration="1154000" />
       <workItem from="1629456485040" duration="63000" />
-      <workItem from="1629508451539" duration="4922000" />
+      <workItem from="1629508451539" duration="8472000" />
+      <workItem from="1629597012729" duration="4191000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1629509727923</created>
@@ -91,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629509727923</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="-">
+      <created>1629520609688</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1629520609688</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

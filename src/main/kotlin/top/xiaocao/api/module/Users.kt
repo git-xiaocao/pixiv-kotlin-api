@@ -9,5 +9,5 @@ data class Users(
     @SerialName("user_previews")
     val userPreviews: List<UserPreview>,
     @SerialName("next_url")
-    val nextUrl: String,
+    val nextUrl: String?,
 )

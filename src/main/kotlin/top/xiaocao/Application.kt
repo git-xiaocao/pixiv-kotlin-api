@@ -18,14 +18,13 @@ suspend fun testGetUserDetail(){
 }
 
 suspend fun testGetUserBookmarks() {
-    //获取自己的
-    val result = api.getUserBookmarks(46139112, true)
+
+    val result = api.getUserBookmarks(50258193, true)
     val json = Json.encodeToString(result)
     println(json)
 }
 
 suspend fun testGetUserIllusts() {
-    //逆流茶会
     val result = api.getUserIllusts(50258193, WorkType.ILLUST)
     val json = Json.encodeToString(result)
     println(json)
@@ -42,6 +41,14 @@ suspend fun testGetRecommendedUsers() {
     val json = Json.encodeToString(result)
     println(json)
 }
+
+suspend fun testGetFollowingUsers() {
+    val result = api.getFollowingUsers(50258193)
+
+    val json = Json.encodeToString(result)
+    println(json)
+}
+
 
 suspend fun testGetRanking() {
 
