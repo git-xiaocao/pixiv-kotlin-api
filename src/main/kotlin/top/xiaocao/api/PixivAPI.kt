@@ -59,7 +59,7 @@ class PixivAPI {
             header("Accept-Language", "zh-CN")
 
             //抓包 或者 登录OAuth 获取  还没写
-            header("Authorization", "Bearer 7Mx5VzVmzLnUvUK6b1yMWgfaEutWFpsyfDcR8vUYvuE")
+            header("Authorization", "Bearer 这里填Token")
 
 
         }
