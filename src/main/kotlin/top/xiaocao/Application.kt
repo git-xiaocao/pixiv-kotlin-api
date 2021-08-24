@@ -4,7 +4,7 @@ package top.xiaocao
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import top.xiaocao.api.*
-import top.xiaocao.api.module.Search
+import top.xiaocao.api.model.Search
 
 
 
@@ -64,10 +64,12 @@ suspend fun testGetTrendingTags() {
 }
 
 suspend fun testSearch() {
+
     //花园猫 降序 标签完全匹配
-    val result = api.search("花園セレナ", SearchSort.DATE_DESC, SearchTarget.EXACT_MATCH_FOR_TAGS)
+
+    val result = api.search("abc", SearchSort.DATE_DESC, SearchTarget.EXACT_MATCH_FOR_TAGS)
     result.nextUrl?.let {
-        //测试nextUrl
+
         val r: Search = api.next(it)
         val json = Json.encodeToString(r)
         println(json)

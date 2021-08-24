@@ -1,4 +1,4 @@
-package top.xiaocao.api.module
+package top.xiaocao.api.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

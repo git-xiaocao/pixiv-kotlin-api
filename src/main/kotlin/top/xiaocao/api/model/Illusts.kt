@@ -1,11 +1,12 @@
-package top.xiaocao.api.module
+package top.xiaocao.api.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import top.xiaocao.api.entity.Illust
 
 @Serializable
-data class Comments(
-    val comments: List<Comments>,
+data class Illusts(
+    val illusts: List<Illust>,
     @SerialName("next_url")
     val nextUrl: String? = null,
 )

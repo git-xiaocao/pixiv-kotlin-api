@@ -13,7 +13,7 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import kotlinx.serialization.json.Json
 import top.xiaocao.api.entity.Comment
-import top.xiaocao.api.module.*
+import top.xiaocao.api.model.*
 
 
 class CustomX509TrustManager : X509TrustManager {
@@ -96,7 +96,6 @@ class PixivAPI {
 
 
     suspend inline fun <reified T> next(url: String): T {
-
         return httpClient.get(url.replaceFirst("app-api.pixiv.net", "210.140.131.187"))
     }
 
