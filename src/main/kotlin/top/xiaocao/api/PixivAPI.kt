@@ -31,7 +31,8 @@ class PixivAPI {
     //210.140.131.188
     //210.140.131.189
     //随便用一个
-    private val targetIP = "210.140.131.187"
+    val targetIP = "210.140.131.187"
+    val targetHost = "app-api.pixiv.net"
     private val baseUrl = "https://${targetIP}"
 
 
@@ -52,7 +53,7 @@ class PixivAPI {
         defaultRequest {
 
             //指定Host 不然请求会失败(服务器不知道请求的是那个域名)
-            header("Host", "app-api.pixiv.net")
+            header("Host", targetHost)
 
             header("User-Agent", "PixivAndroidApp/6.19.0 (Android 7.1.2; XiaoCao)")
             header("App-OS", "android")
@@ -98,7 +99,7 @@ class PixivAPI {
 
 
     suspend inline fun <reified T> next(url: String): T {
-        return httpClient.get(url.replaceFirst("app-api.pixiv.net", "210.140.131.187"))
+        return httpClient.get(url.replaceFirst(targetHost, targetIP))
     }
 
     /**
