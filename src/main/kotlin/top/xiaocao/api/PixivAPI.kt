@@ -287,7 +287,7 @@ class PixivAPI {
      * @param stampId 表情包ID
      * @param parentCommentId 父评论ID(用来回复)
      * */
-    suspend fun addComment(illustId: Int, comment: String = "", stampId: Int?, parentCommentId: Int? = null): Comment {
+    suspend fun commentAdd(illustId: Int, comment: String = "", stampId: Int?, parentCommentId: Int? = null): Comment {
         return httpClient.post {
             url("${baseUrl}/v1/illust/comment/add")
 
@@ -306,7 +306,7 @@ class PixivAPI {
      * 删除评论(自己的)
      * @param commentId 评论ID
      * */
-    suspend fun deleteComment(commentId: Int) {
+    suspend fun commentDelete(commentId: Int) {
         return httpClient.post {
             url("${baseUrl}/v1/illust/comment/delete")
 
@@ -362,16 +362,28 @@ class PixivAPI {
     }
 
     /**
+     * 获取书签详细
+     * @param illustId 插画ID
+     * */
+    suspend fun getBookmarkDetail(illustId: Int): BookmarkDetail {
+        return httpClient.post {
+            url("${baseUrl}/v2/illust/bookmark/detail")
+            parameter("illust_id", illustId)
+        }
+    }
+
+    /**
      * 收藏插画
      * @param illustId 插画ID
      * @param restrict 为ture获取公开的(public) 反之不公开(private)
+     * @param tags 收藏标签
      * */
-    suspend fun bookmarkAdd(illustId: Int, restrict: Boolean = true) {
+    suspend fun bookmarkAdd(illustId: Int, restrict: Boolean = true, tags: List<String> = emptyList()) {
         return httpClient.post {
             url("${baseUrl}/v2/illust/bookmark/add")
             parameter("illust_id", illustId)
             parameter("restrict", if (restrict) "public" else "private")
-
+            parameter("tags", tags)
         }
     }
 

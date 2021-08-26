@@ -27,10 +27,13 @@ data class Illust(
     @SerialName("x_restrict")
     val xRestrict: Int,
     //series :null
+    /**
+     * 当[pageCount]等于1时 图片的originalImageUrl存在这里
+     * */
     @SerialName("meta_single_page")
     val metaSinglePage: MetaSinglePage,
     /**
-     * 当[pageCount]大于1时 图片的[ImageUrls]就存在这里
+     * 当[pageCount]大于1时 图片的[ImageUrls]存在这里
      * */
     @SerialName("meta_pages")
     val meta_pages:List<ImageUrls>,
