@@ -29,7 +29,11 @@ data class Illust(
     //series :null
     @SerialName("meta_single_page")
     val metaSinglePage: MetaSinglePage,
-    //meta_pages : [ { "image_urls": ImageUrls类 }, { "image_urls": ImageUrls }, { "image_urls": ImageUrls } ]
+    /**
+     * 当[pageCount]大于1时 图片的[ImageUrls]就存在这里
+     * */
+    @SerialName("meta_pages")
+    val meta_pages:List<ImageUrls>,
     @SerialName("total_view")
     val totalView: Int,
     @SerialName("total_bookmarks")

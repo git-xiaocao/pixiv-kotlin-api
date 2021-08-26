@@ -26,11 +26,13 @@ class CustomX509TrustManager : X509TrustManager {
 
 class PixivAPI {
 
+
     //210.140.131.187
     //210.140.131.188
     //210.140.131.189
     //随便用一个
-    private val baseUrl = "https://210.140.131.187"
+    private val targetIP = "210.140.131.187"
+    private val baseUrl = "https://${targetIP}"
 
 
     val httpClient: HttpClient = HttpClient(OkHttp) {
@@ -113,6 +115,7 @@ class PixivAPI {
     }
 
     /**
+     * 获取用户收藏
      *  @param userId 用户ID
      *  @param restrict 为ture获取公开的(public) 反之不公开(private)
      * */
@@ -192,17 +195,19 @@ class PixivAPI {
     }
 
     /**
+     * 获取关注用户
      *  @param userId 用户ID
      *  @param restrict 为ture获取公开的(public) 反之不公开(private)
      * */
     suspend fun getFollowingUsers(userId: Int, restrict: Boolean = true): Users {
         return httpClient.get {
             url("${baseUrl}/v1/user/following")
+            parameter("filter", "for_android")
 
             parameter("user_id", userId)
             parameter("restrict", if (restrict) "public" else "private")
 
-            parameter("filter", "for_android")
+
         }
     }
 
@@ -252,7 +257,7 @@ class PixivAPI {
 
     /**
      * 获取评论的回复
-     * @param commentId 插画ID
+     * @param commentId 评论ID
      * */
     suspend fun getCommentReplies(commentId: Int): Comments {
         return httpClient.get {
@@ -278,32 +283,21 @@ class PixivAPI {
      * 添加评论(评论一个插画)
      * @param illustId 插画ID
      * @param comment 评论内容
+     * @param stampId 表情包ID
      * @param parentCommentId 父评论ID(用来回复)
      * */
-    suspend fun addComment(illustId: Int, comment: String, parentCommentId: Int? = null): Comment {
+    suspend fun addComment(illustId: Int, comment: String = "", stampId: Int?, parentCommentId: Int? = null): Comment {
         return httpClient.post {
             url("${baseUrl}/v1/illust/comment/add")
 
             parameter("illust_id", illustId)
             parameter("comment", comment)
+            if (null != stampId) {
+                parameter("stamp_Id", parentCommentId)
+            }
             if (null != parentCommentId) {
                 parameter("parent_comment_id", parentCommentId)
             }
-        }
-    }
-
-    /**
-     * 添加评论(发一个P站自带的表情包)
-     * @param illustId 插画ID
-     * @param stampId 表情包ID
-     * */
-    suspend fun addComment(illustId: Int, stampId: Int): Comment {
-        return httpClient.post {
-            url("${baseUrl}/v1/illust/comment/add")
-
-            parameter("illust_id", illustId)
-            parameter("comment", "")
-            parameter("stamp_id", stampId)
         }
     }
 
@@ -314,7 +308,6 @@ class PixivAPI {
     suspend fun deleteComment(commentId: Int) {
         return httpClient.post {
             url("${baseUrl}/v1/illust/comment/delete")
-
 
             parameter("comment_id", commentId)
         }
@@ -346,7 +339,7 @@ class PixivAPI {
         word: String, sort: SearchSort,
         target: SearchTarget,
         startDate: String? = null,
-        endDate: String? = null
+        endDate: String? = null,
     ): Search {
         return httpClient.get {
             url("${baseUrl}/v1/search/illust")

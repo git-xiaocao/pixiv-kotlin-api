@@ -8,16 +8,16 @@ enum class RankingMode(val value: String) {
     /** 天 R18 */
     DAY_R18("day_r18"),
 
-    /** 男性欢迎  */
+    /** 天 男性欢迎  */
     DAY_MALE("day_male"),
 
-    /** 男性欢迎 R18 */
+    /** 天 男性欢迎 R18 */
     DAY_MALE_R18("day_male_r18"),
 
-    /** 女性欢迎 */
+    /** 天 女性欢迎 */
     DAY_FEMALE("day_female"),
 
-    /** 女性欢迎 R18 */
+    /** 天 女性欢迎 R18 */
     DAY_FEMALE_R18("day_female_r18"),
 
     /** 周(原创) */
