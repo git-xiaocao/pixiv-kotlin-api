@@ -13,6 +13,7 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import kotlinx.serialization.json.Json
 import top.xiaocao.api.entity.Comment
+import top.xiaocao.api.entity.Illust
 import top.xiaocao.api.model.*
 
 
@@ -250,6 +251,15 @@ class PixivAPI {
     suspend fun getIllustRelated(illustId: Int): Illusts {
         return httpClient.get {
             url("${baseUrl}/v2/illust/related")
+
+            parameter("filter", "for_android")
+            parameter("illust_id", illustId)
+        }
+    }
+
+    suspend fun getIllustDetail(illustId: Int): Illust {
+        return httpClient.get {
+            url("${baseUrl}/v1/illust/detail")
 
             parameter("filter", "for_android")
             parameter("illust_id", illustId)
