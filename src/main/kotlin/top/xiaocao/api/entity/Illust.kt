@@ -36,7 +36,7 @@ data class Illust(
      * 当[pageCount]大于1时 图片的[ImageUrls]存在这里
      * */
     @SerialName("meta_pages")
-    val meta_pages:List<ImageUrls>,
+    val meta_pages: List<ImageUrls>,
     @SerialName("total_view")
     val totalView: Int,
     @SerialName("total_bookmarks")
@@ -46,4 +46,6 @@ data class Illust(
     val visible: Boolean,
     @SerialName("is_muted")
     val isMuted: Boolean,
+    @SerialName("total_comments")
+    val totalComments: Int? = null,
 )
