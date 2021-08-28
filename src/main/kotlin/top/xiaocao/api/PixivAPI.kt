@@ -335,12 +335,14 @@ class PixivAPI {
      * @param target 搜索目标
      * @param startDate 开始时间(必须跟[endDate]一起填)
      * @param endDate 结束时间(必须跟[startDate]一起填)
+     * @param bookmarkTotal 收藏数量
      * */
     suspend fun search(
         word: String, sort: SearchSort,
         target: SearchTarget,
         startDate: String? = null,
         endDate: String? = null,
+        bookmarkTotal: Int? = null
     ): Search {
         return httpClient.get {
             url("${baseUrl}/v1/search/illust")
@@ -353,8 +355,11 @@ class PixivAPI {
             parameter("search_target", target.value)
 
             if (null != startDate && null != endDate) {
-                parameter("start-date", startDate)
-                parameter("end-date", endDate)
+                parameter("start_date", startDate)
+                parameter("end_date", endDate)
+            }
+            if (null != bookmarkTotal) {
+                parameter("bookmark_num", bookmarkTotal)
             }
 
 
