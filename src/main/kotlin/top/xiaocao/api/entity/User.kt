@@ -10,6 +10,9 @@ data class User(
     val account: String,
     @SerialName("profile_image_urls")
     val profileImageUrls: ProfileImageUrls,
+    /**
+     * 当[User]在Comment中的时候没有这个字段
+     * */
     @SerialName("is_followed")
-    val isFollowed: Boolean,
+    val isFollowed: Boolean?,
 )

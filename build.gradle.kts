@@ -6,8 +6,8 @@ val ktorVersion: String by project
 plugins {
 
     application
-    kotlin("jvm") version "1.5.21"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.5.21"
+    kotlin("jvm") version "1.5.30"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.5.30"
     id("application")
 }
 

@@ -6,6 +6,7 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.X509TrustManager
 
 import io.ktor.client.*
+import io.ktor.client.engine.*
 import io.ktor.client.engine.okhttp.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.JsonFeature
@@ -25,14 +26,16 @@ class CustomX509TrustManager : X509TrustManager {
     override fun checkServerTrusted(certs: Array<X509Certificate?>?, authType: String?) {}
 }
 
+@SuppressWarnings("unused")
 class PixivAPI {
 
 
     //210.140.131.187
     //210.140.131.188
     //210.140.131.189
+    //210.140.131.199
     //随便用一个
-    val targetIP = "210.140.131.187"
+    val targetIP = "210.140.131.199"
     val targetHost = "app-api.pixiv.net"
     private val baseUrl = "https://${targetIP}"
 
@@ -40,7 +43,7 @@ class PixivAPI {
     val httpClient: HttpClient = HttpClient(OkHttp) {
         engine {
             config {
-
+                proxy = ProxyBuilder.socks("127.0.0.1", 44000)
                 //忽略SSL证书(X509)错误
                 val sslContext = SSLContext.getInstance("SSL")
                 sslContext.init(null, arrayOf(CustomX509TrustManager()), SecureRandom())
@@ -56,14 +59,14 @@ class PixivAPI {
             //指定Host 不然请求会失败(服务器不知道请求的是那个域名)
             header("Host", targetHost)
 
-            header("User-Agent", "PixivAndroidApp/6.19.0 (Android 7.1.2; XiaoCao)")
+            header("User-Agent", "PixivAndroidApp/6.21.0 (Android 7.1.2; XiaoCao)")
             header("App-OS", "android")
             header("App-OS-Version", "7.1.2")
-            header("App-Version", "6.1.0")
+            header("App-Version", "6.21.1")
             header("Accept-Language", "zh-CN")
 
             //抓包 或者 登录OAuth 获取  还没写
-            header("Authorization", "Bearer 这里填Token")
+            header("Authorization", "Bearer _diSOObBHoARt5rYhUd0npKqjv4ruv-hr56xmbeJuwk")
 
 
         }
@@ -431,6 +434,7 @@ class PixivAPI {
      * 取消关注用户
      * @param userId 用户ID
      * */
+
     suspend fun followDelete(userId: Int) {
         return httpClient.post {
             url("${baseUrl}/v1/user/follow/delete")
@@ -439,5 +443,12 @@ class PixivAPI {
         }
     }
 
-
+    /**
+     * 获取所有表情贴图
+     * */
+    suspend fun getStamps(): Stamps {
+        return httpClient.get {
+            url("${baseUrl}/v1/stamps")
+        }
+    }
 }
