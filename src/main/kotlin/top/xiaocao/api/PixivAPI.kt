@@ -43,7 +43,6 @@ class PixivAPI {
     val httpClient: HttpClient = HttpClient(OkHttp) {
         engine {
             config {
-                proxy = ProxyBuilder.socks("127.0.0.1", 44000)
                 //忽略SSL证书(X509)错误
                 val sslContext = SSLContext.getInstance("SSL")
                 sslContext.init(null, arrayOf(CustomX509TrustManager()), SecureRandom())
@@ -66,7 +65,7 @@ class PixivAPI {
             header("Accept-Language", "zh-CN")
 
             //抓包 或者 登录OAuth 获取  还没写
-            header("Authorization", "Bearer 这里填Token")
+            header("Authorization", "Bearer 这里填写")
 
 
         }
@@ -260,7 +259,7 @@ class PixivAPI {
         }
     }
 
-    suspend fun getIllustDetail(illustId: Int): Illust {
+    suspend fun getIllustDetail(illustId: Int): IllustDetail {
         return httpClient.get {
             url("${baseUrl}/v1/illust/detail")
 
