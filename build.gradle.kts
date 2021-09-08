@@ -4,7 +4,6 @@ val ktorVersion: String by project
 
 
 plugins {
-
     application
     kotlin("jvm") version "1.5.30"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.5.30"
@@ -26,15 +25,6 @@ dependencies {
     implementation("io.ktor:ktor-client-serialization:$ktorVersion")
     //这个引擎可以配置代理
     implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+    testImplementation(kotlin("test", version = "1.5.30"))
 
-
-}
-
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions {
-    jvmTarget = "16"
-}
-val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.kotlinOptions {
-    jvmTarget = "16"
 }

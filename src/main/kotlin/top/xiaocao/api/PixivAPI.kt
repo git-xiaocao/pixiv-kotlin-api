@@ -14,7 +14,6 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import kotlinx.serialization.json.Json
 import top.xiaocao.api.entity.Comment
-import top.xiaocao.api.entity.Illust
 import top.xiaocao.api.model.*
 
 
@@ -26,8 +25,11 @@ class CustomX509TrustManager : X509TrustManager {
     override fun checkServerTrusted(certs: Array<X509Certificate?>?, authType: String?) {}
 }
 
+/**
+ * @param authorization Ktor Client暂时不方便写获取和刷新逻辑 [看这个项目](https://github.com/xiao-cao-x/pixiv_func_android)
+ * */
 @SuppressWarnings("unused")
-class PixivAPI {
+class PixivAPI(val authorization: String) {
 
 
     //210.140.131.187
@@ -64,7 +66,7 @@ class PixivAPI {
             header("App-Version", "6.21.1")
             header("Accept-Language", "zh-CN")
 
-            //抓包 或者 登录OAuth 获取  还没写
+
             header("Authorization", "Bearer 这里填写")
 
 
