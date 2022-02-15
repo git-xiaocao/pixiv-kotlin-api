@@ -1,6 +1,6 @@
-# 夹批搪能不能死啊
 # Pixiv Kotlin API
 
-基于 Ktor Client
++ Ktor Client
++ 刷新AuthToken支持
 
-### 禁止夹批搪使用
+    

@@ -1,23 +1,37 @@
 import kotlinx.coroutines.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import me.xiaocao.*
+import org.junit.Before
 import org.junit.Test
-import top.xiaocao.api.*
 import java.io.File
 import java.net.URL
 
-@DelicateCoroutinesApi
+
 class SampleTest {
 
-    private val api = PixivAPI("你的token")
+    private val jsonFile = File("./userAccount.json")
+
+    private lateinit var apiClient: ApiClient
 
     //Neps
     private val testUserId = 50258193
+
+    @Before
+    fun before() {
+        apiClient = ApiClient(Json.decodeFromString(jsonFile.readText())) {
+            jsonFile.writeText(Json.encodeToString(it))
+        }
+    }
+    
 
     //获取用户详细信息
     @Test
     fun testGetUserDetail() {
         runBlocking {
             //Neps
-            api.getUserDetail(testUserId)
+            apiClient.getUserDetail(testUserId)
         }.let { result ->
             println(result)
         }
@@ -27,7 +41,7 @@ class SampleTest {
     @Test
     fun testGetUserBookmarks() {
         runBlocking {
-            api.getUserBookmarks(testUserId, true)
+            apiClient.getUserIllustBookmarks(testUserId, Restrict.Public)
         }.let { result ->
             println(result)
         }
@@ -37,7 +51,7 @@ class SampleTest {
     @Test
     fun testGetUserIllusts() {
         runBlocking {
-            api.getUserIllusts(50258193, WorkType.ILLUST)
+            apiClient.getUserIllusts(50258193, IllustType.ILLUST)
         }.let { result ->
             println(result)
         }
@@ -47,7 +61,7 @@ class SampleTest {
     @Test
     fun testGetRecommendedIllusts() {
         runBlocking {
-            api.getRecommendedIllusts(WorkType.ILLUST)
+            apiClient.getRecommendedIllusts(IllustType.ILLUST)
         }.let { result ->
             println(result)
         }
@@ -57,7 +71,7 @@ class SampleTest {
     @Test
     fun testGetRecommendedUsers() {
         runBlocking {
-            api.getRecommendedUsers()
+            apiClient.getRecommendedUsers()
         }.let { result ->
             println(result)
         }
@@ -67,7 +81,7 @@ class SampleTest {
     @Test
     fun testGetFollowingUsers() {
         runBlocking {
-            api.getFollowingUsers(testUserId)
+            apiClient.getFollowingUsers(testUserId,Restrict.Public)
         }.let { result ->
             println(result)
         }
@@ -77,7 +91,7 @@ class SampleTest {
     @Test
     fun testGetRanking() {
         runBlocking {
-            api.getRanking(RankingMode.DAY)
+            apiClient.getRanking(RankingMode.DAY)
         }.let { result ->
             println(result)
         }
@@ -88,7 +102,7 @@ class SampleTest {
     @Test
     fun testGetTrendingTags() {
         runBlocking {
-            api.getTrendingTags()
+            apiClient.getTrendingTags()
         }.let { result ->
             println(result)
         }
@@ -99,7 +113,7 @@ class SampleTest {
     fun testSearch() {
         runBlocking {
             //花园猫 降序 标签完全匹配
-            api.search("花园猫", SearchSort.DATE_DESC, SearchTarget.EXACT_MATCH_FOR_TAGS)
+            apiClient.searchIllust("花园猫", SearchSort.DATE_DESC, SearchTarget.EXACT_MATCH_FOR_TAGS)
         }.let { result ->
             println(result)
         }
@@ -109,9 +123,9 @@ class SampleTest {
     @Test
     fun testDownloadStamps() {
         runBlocking {
-            api.getStamps().let { result ->
+            apiClient.getStamps().let { result ->
 
-                val saveDir = File("C:\\Users\\Administrator\\Desktop\\stamps")
+                val saveDir = File("C:\\Users\\XiaoCao\\Desktop\\stamps")
                 if (!saveDir.exists() && !saveDir.isDirectory) {
                     saveDir.mkdir()
                 }

@@ -2,29 +2,28 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val ktorVersion: String by project
 
-
 plugins {
-    application
-    kotlin("jvm") version "1.5.30"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.5.30"
-    id("application")
+    kotlin("jvm") version "1.6.10"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.6.10"
 }
 
-group = "top.xiaocao"
-version = "0.0.1"
-
+group = "me.xiaocao"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
 }
 
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "11"
+}
 
 
 dependencies {
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
-    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-    //这个引擎可以配置代理
-    implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
-    testImplementation(kotlin("test", version = "1.5.30"))
+    implementation("io.ktor", "ktor-client-core", ktorVersion)
+    implementation("io.ktor", "ktor-client-content-negotiation", ktorVersion)
+    implementation("io.ktor", "ktor-serialization-kotlinx-json", ktorVersion)
 
+    implementation("io.ktor", "ktor-client-okhttp", ktorVersion)
+    testImplementation(kotlin("test", "1.6.10"))
 }
